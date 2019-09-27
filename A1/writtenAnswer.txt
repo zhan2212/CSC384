@@ -1,0 +1,27 @@
+(1)
+ (1a) The branching factor of the successor function is 2 when the Pacman is in the corner. This is because the Pacman can only choose from 2 cardinal directions to move towards the next state, and the other 2 directions are block by the wall of the corner.
+
+ (1b) The branching factor of the successor function is 4 when the Pacman is in the middle. This is because the Pacman can choose from 4 cardinal directions to move towards the next state.
+
+ (1c) 
+BFS: The maximum possible depth of the search space is 2*N-2. This is because when doing search, the longest path exists when moving from one corner to the across corner. In this case, the length of the path is 2*(N-1) = 2*N-2.
+DFS: The case is the same as above. But when using DFS, the maximum possible depth of the search space is N^2 - 1 since the algorithm may visit every nodes before reaching the goal.
+
+(2)
+ (2a) The maximum number of paths on the OPEN list, n, is 4*[4^(ctotal/cmin) - 1]. When in the deepest level, there are at most 4^(ctotal/cmin) nodes in total, where (ctotal/cmin) represents the possible maximum depth. In the worst case, all of these nodes are expended except the last one, which is the goal.(i.e. 4^(ctotal/cmin) - 1 nodes are expanded) Thus, the paths on the OPEN is 4*[4^(ctotal/cmin) - 1].
+
+ (2b) The upper bound on the total cost of the solution is cmin*[log_4(n+4) - 1]. The result can be achieved by letting the result of (2a), 4*[4^(c/cmin) - 1] = n. By rearranging the equation, we can get c = cmin*[log_4(n+4) - 1], which represents the upper bound of  the total cost.
+
+
+(3)
+ (3a) Yes. This evaluation function can yield an optimal solution
+
+ (3b) No. While h(n) is admissible, we cannot guarantee that 3*h(n) is also admissible.The upper bound of (cost of returned solution)/(cost of optimal solution) is 3.
+
+ (3c) Yes.This evaluation function can yield an optimal solution. While h(n) is admissible, we can guarantee that 1/3 * h(n)is also admissible. Thus, f(n) = 3*[g(n) + 1/3*h(n)] can yield an optimal solution. 
+
+
+(4)
+ (4a) When we want to minimize the used memory space(probably when the problem is complicated), I would recommend h1.Since h1 dominates h2, h1 can guarantee less expanded nodes than h2, meaning that h1 is more space efficient.
+
+ (4b) When we want to minimize the computing time, I would recommend h2. We assume that the the number of nodes expanded using h2 is not extremely greater than that of h1. In this case, although h2 will expand more nodes than h1, the total time cost will be less, meaning that h2 is more time efficient.
